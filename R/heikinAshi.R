@@ -3,7 +3,7 @@
 #'@return the Heikin Ashi recomputed OHLC time series
 #'@export
 "heikinAshi" <- function(OHLC) {
-  heikinAshi <- xts(matrix(nrow=dim(OHLC)[1], ncol=dim(OHLC)[2],0), order.by=index(OHLC))
+  heikinAshi <- xts(matrix(nrow=dim(OHLC)[1], ncol=4,0), order.by=index(OHLC))
   colnames(heikinAshi) <- c("xO","xH","xL","xC")
   heikinAshi$xO[1] <- (Op(OHLC)[1]+Cl(OHLC)[1])/2
   heikinAshi$xC <- rowMeans(OHLC)
